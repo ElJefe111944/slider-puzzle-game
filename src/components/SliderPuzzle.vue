@@ -14,7 +14,7 @@
                 <img :src="require(`../assets/${puzzleId}/${s}`)">
             </div>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -44,13 +44,13 @@ export default {
             default: "cut-easy",
         },
     },
-    data(){
+    data() {
         return {
             // reative properties
             correctPuzzleArray,
             // shuffled array is a copy of the correct array
             shuffledPuzzleArray: [...correctPuzzleArray].sort(
-            // randon sort 
+                // randon sort 
                 () => Math.random() - 0.5
             ),
             // store images selected by user
@@ -62,44 +62,44 @@ export default {
         };
     },
     computed: {
-        isWinning(){
+        isWinning() {
             // compares correct array to shuffled array
-            for (let i = 0; i < correctPuzzleArray.length; i++){
+            for (let i = 0; i < correctPuzzleArray.length; i++) {
                 // if order does NOT match
-                if(correctPuzzleArray[i] !== this.shuffledPuzzleArray[i]){
+                if (correctPuzzleArray[i] !== this.shuffledPuzzleArray[i]) {
                     // games continues
                     return false;
-                }   
+                }
             }
-                         // if order DOES match
-                // User wins
-                return true; // isWinning message 
+            // if order DOES match
+            // User wins
+            return true; // isWinning message 
         },
-        elapsedDiff(){
+        elapsedDiff() {
             const currentDateTime = moment(this.currentDateTime);
             const startDateTime = moment(this.startDateTime);
             // time taken for completion
             return currentDateTime.diff(startDateTime);
-            
+
         },
-        elapsedTime(){
+        elapsedTime() {
             // display in human readable format 
             return moment.utc(this.elapsedDiff).format('HH:mm:ss');
         }
     },
     methods: {
         // method to enable user to swap thwo images that have been added to indexesToSwap array
-        swap(index){
+        swap(index) {
             // check if timer is running
-            if(!this.timer){
+            if (!this.timer) {
                 return;
             }
             // only push to indexesToSwap if less than 2 items in array
-            if(this.indexesToSwap.length < 2){
+            if (this.indexesToSwap.length < 2) {
                 this.indexesToSwap.push(index);
             }
             // swap the order of two indexes slected by user
-            if(this.indexesToSwap.length === 2){
+            if (this.indexesToSwap.length === 2) {
                 // destructure indexesToswap
                 const [index1, index2] = this.indexesToSwap;
                 // reverse order of indexes in array
@@ -113,7 +113,7 @@ export default {
         },
         // method to start the tiimer once the start button is clicked
         // slides are also re-shuffled 
-        start(){
+        start() {
             // reset timer 
             this.resetTime();
             //re-shuffle
@@ -127,7 +127,7 @@ export default {
             this.timer = setInterval(() => {
                 this.currentDateTime = new Date();
                 // stop timer if user has won
-                if(this.isWinning){
+                if (this.isWinning) {
                     // record time
                     this.recordSpeedRecords();
                     this.stop();
@@ -135,17 +135,17 @@ export default {
             }, 1000);
         },
         // rest timer once game has finished
-        stop(){
+        stop() {
             this.resetTime();
             clearInterval(this.timer);
         },
         // method to reset timer - on click
-        resetTime(){
+        resetTime() {
             this.startDateTime = new Date();
             this.currentDateTime = new Date();
         },
         // calculate score based on timing
-        recordSpeedRecords(){
+        recordSpeedRecords() {
             // get times from local storage or return an empty array 
             let records = JSON.parse(localStorage.getItem("records")) || [];
             const { elapsedTime, elapsedDiff } = this;
@@ -167,8 +167,10 @@ export default {
 <style scoped>
 .row {
     display: flex;
-    max-width: 90vw;
+    max-width: 70vw;
     flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 60px;
 }
 .column {
     flex-grow: 1;
@@ -176,6 +178,16 @@ export default {
 }
 .column img {
     max-width: 100%;
+    height: 100%;
+}
+@media(max-width: 768px){
+    .row[data-v-4a1f852f] {
+    display: flex;
+    max-width: 90vw;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 60px;
+}
 }
 
 </style>

@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style>
+/*-- Default styles --*/
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -35,5 +36,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+/*-- Button styles --*/
+button {
+  padding: 8px 10px;
+  width: 125px;
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>

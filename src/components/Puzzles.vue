@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="options-container">
         <h1>Select a Puzzle</h1>
         <div v-for="p of puzzles" :key="p.id" class="row">
             <div>
@@ -59,6 +59,7 @@ export default {
     max-width: 90vw;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: auto;
 }
 .row img {
     width: 100px;
@@ -66,6 +67,10 @@ export default {
 
 .row .play-button {
     padding-top: 25px;
+}
+.play-buttom {
+    display: flex;
+    align-items: center;
 }
 
 </style>
