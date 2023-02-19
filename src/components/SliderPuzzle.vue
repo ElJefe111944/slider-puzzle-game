@@ -95,6 +95,42 @@ export default {
                 // empty indexesToSwap array so more items can be swapped
                 this.indexesToSwap = [];
             }
+        },
+        // method to start the tiimer once the start button is clicked
+        // slides are also re-shuffled 
+        start(){
+            // reset timer 
+            this.resetTime();
+            //re-shuffle
+            this.shuffledPuzzleArray = [...correctPuzzleArray].sort(
+                () => Math.random - 0.5
+            );
+            // empty indexesToSwap array
+            // allowing user to reselect items to be swapped
+            this.indexesToSwap = [];
+            // start timer 
+            this.timer = setInterval(() => {
+                this.currentDateTime = new Date();
+                // stop timer if user has won
+                if(this.isWinning){
+                    // record time
+                    this.recordSpeedRecords();
+                    this.stop();
+                }
+            }, 1000);
+        },
+        // rest timer once game has finished
+        stop(){
+            this.resetTime();
+            clearInterval(timer);
+        },
+        // method to reset timer - on click
+        resetTime(){
+            this.startDateTime = new Date();
+            this.currentDateTime = new Date();
+        },
+        recordSpeedRecords(){
+
         }
     }
 
