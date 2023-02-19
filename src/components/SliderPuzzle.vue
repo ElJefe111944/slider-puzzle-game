@@ -3,13 +3,13 @@
         <h1>Swap the Images to Win</h1>
         <button @click="start" id="start-button">Start Game</button>
         <button @click="stop" id="stop-button">Quit</button>
-        /*-- Timer --*/
-        <p>Elapsed Time:</p>
-        /*-- Winning message --*/
+        <!-- Timer -->
+        <p>Elapsed Time: {{ elapsedTime }}</p>
+        <!-- Winning message -->
         <h1 v-if="isWinning">You Have Won!!</h1>
-        /*-- Shuffled puzzle --*/
+        <!-- Shuffled puzzle -->
         <div class="row">
-            /*-- Idividual image slice */
+            <!-- Idividual image slice -->
             <div class="column" v-for="(s, index) of shuffledPuzzleArray" :key="s" @click="swap(index)">
                 <img :src="require(`../assets/${puzzleId}/${s}`)">
             </div>
@@ -69,11 +69,11 @@ export default {
                 if(correctPuzzleArray[i] !== this.shuffledPuzzleArray[i]){
                     // games continues
                     return false;
-                }
-                // if order DOES match
+                }   
+            }
+                         // if order DOES match
                 // User wins
                 return true; // isWinning message 
-            }
         },
         elapsedDiff(){
             const currentDateTime = moment(this.currentDateTime);
@@ -83,8 +83,8 @@ export default {
             
         },
         elapsedTime(){
-            // ndisplay in human readable format 
-            return moment.utc(this.elapsedDiff().format('HH:mm:SS'));
+            // display in human readable format 
+            return moment.utc(this.elapsedDiff).format('HH:mm:ss');
         }
     },
     methods: {
@@ -118,7 +118,7 @@ export default {
             this.resetTime();
             //re-shuffle
             this.shuffledPuzzleArray = [...correctPuzzleArray].sort(
-                () => Math.random - 0.5
+                () => Math.random() - 0.5
             );
             // empty indexesToSwap array
             // allowing user to reselect items to be swapped
@@ -137,7 +137,7 @@ export default {
         // rest timer once game has finished
         stop(){
             this.resetTime();
-            clearInterval(timer);
+            clearInterval(this.timer);
         },
         // method to reset timer - on click
         resetTime(){

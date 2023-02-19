@@ -1,15 +1,28 @@
 <template>
-<h1>hello world</h1>
-<Puzzles @puzzle-changed="selectedPuzzleID = $event"/>
+<div>
+  <Puzzles @puzzle-changed="selectedPuzzleID = $event"/>
+  <Records />
+  <SliderPuzzle :puzzleId="selectedPuzzleID" />
+</div>
 </template>
 
 <script>
+import SliderPuzzle  from './components/SliderPuzzle.vue';
 import Puzzles from './components/Puzzles.vue';
+import Records from './components/Records.vue';
 
 export default {
   name: 'App',
   components: {
-    Puzzles
+    Puzzles,
+    SliderPuzzle,
+    Records,
+  },
+  data(){
+    return {
+      // default puzzle
+      selectedPuzzleID: "cut-easy"
+    }
   }
 }
 </script>

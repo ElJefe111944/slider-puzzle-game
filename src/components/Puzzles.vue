@@ -18,21 +18,22 @@
 <script>
 
 export default {
+    name: "Puzzle-component",
     data(){
         return {
             // reactive properties
             // array object containing puzzlie id, image & title
             puzzles: [
                 {
-                    id: "easy-cut",
+                    id: "cut-easy",
                     image: "easy.jpg",
                     title: "Easy"
                 }, {
-                    id: "medium-cut",
+                    id: "cut-medium",
                     image: "medium.jpg",
                     title: "Medium"
                 }, {
-                    id: "hard-cut",
+                    id: "cut-hard",
                     image: "hard.jpg",
                     title: "Hard"
                 }
