@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<h1>hello world</h1>
+<Puzzles @puzzle-changed="selectedPuzzleID = $event"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Puzzles from './components/Puzzles.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Puzzles
   }
 }
 </script>
