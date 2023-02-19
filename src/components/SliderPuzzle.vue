@@ -1,5 +1,20 @@
 <template>
-    
+    <div>
+        <h1>Swap the Images to Win</h1>
+        <button @click="start" id="start-button">Start Game</button>
+        <button @click="stop" id="stop-button">Quit</button>
+        /*-- Timer --*/
+        <p>Elapsed Time:</p>
+        /*-- Winning message --*/
+        <h1 v-if="isWinning">You Have Won!!</h1>
+        /*-- Shuffled puzzle --*/
+        <div class="row">
+            /*-- Idividual image slice */
+            <div class="column" v-for="(s, index) of shuffledPuzzleArray" :key="s" @click="swap(index)">
+                <img :src="require(`../assets/${puzzleId}/${s}`)">
+            </div>
+        </div>
+    </div>    
 </template>
 
 <script>
@@ -150,5 +165,17 @@ export default {
 </script>
 
 <style scoped>
+.row {
+    display: flex;
+    max-width: 90vw;
+    flex-wrap: wrap;
+}
+.column {
+    flex-grow: 1;
+    width: 33%;
+}
+.column img {
+    max-width: 100%;
+}
 
 </style>
