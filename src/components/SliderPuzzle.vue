@@ -129,12 +129,23 @@ export default {
             this.startDateTime = new Date();
             this.currentDateTime = new Date();
         },
+        // calculate score based on timing
         recordSpeedRecords(){
-
-        }
-    }
-
-}
+            // get times from local storage or return an empty array 
+            let records = JSON.parse(localStorage.getItem("records")) || [];
+            const { elapsedTime, elapsedDiff } = this;
+            // push times to records array
+            records.push({ elapsedTime, elapsedDiff });
+            // sort from fastest to slowest
+            // top 10 will be recorded
+            const sortedRecords = records.sort((a, b) => a.elapsedDiff - b.elapsedDiff).slice(0, 10);
+            // convert to a string to add to local stoarge 
+            const stringifiedRecords = JSON.stringify(sortedRecords);
+            // add to local storage - Tile: records, payload: stringfiedRecords
+            localStorage.setItem('records', stringifiedRecords);
+        },
+    },
+};
 
 </script>
 
