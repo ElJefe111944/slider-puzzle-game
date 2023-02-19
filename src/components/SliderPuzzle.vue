@@ -72,7 +72,31 @@ export default {
             return moment.utc(this.elapsedDiff().format('HH:mm:SS'));
         }
     },
-    methods: {}
+    methods: {
+        // method to enable user to swap thwo images that have been added to indexesToSwap array
+        swap(index){
+            // check if timer is running
+            if(!this.timer){
+                return;
+            }
+            // only push to indexesToSwap if less than 2 items in array
+            if(this.indexesToSwap.length < 2){
+                this.indexesToSwap.push(index);
+            }
+            // swap the order of two indexes slected by user
+            if(this.indexesToSwap.length === 2){
+                // destructure indexesToswap
+                const [index1, index2] = this.indexesToSwap;
+                // reverse order of indexes in array
+                [this.shuffledPuzzleArray[index1], this.shuffledPuzzleArray[index2]] = [
+                    this.shuffledPuzzleArray[index2],
+                    this.shuffledPuzzleArray[index1]
+                ];
+                // empty indexesToSwap array so more items can be swapped
+                this.indexesToSwap = [];
+            }
+        }
+    }
 
 }
 
