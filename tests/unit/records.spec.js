@@ -1,4 +1,4 @@
-import { mount, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import "jest-localstorage-mock"
 import Records from "@/components/Records.vue";
 
