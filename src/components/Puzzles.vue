@@ -8,7 +8,7 @@
             <div>
                 <h2>{{ p.title }}</h2>
             </div>
-            <div class="play-buttom">
+            <div class="play-button">
                 <button @click="selectPuzzle(p)">Play</button>
             </div>
         </div>
