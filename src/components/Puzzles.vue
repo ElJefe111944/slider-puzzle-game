@@ -62,7 +62,8 @@ export default {
     margin: auto;
 }
 .row img {
-    width: 100px;
+    width: 300px;
+    height: auto;
 }
 
 .row .play-button {
@@ -71,6 +72,12 @@ export default {
 .play-buttom {
     display: flex;
     align-items: center;
+}
+@media(max-width: 768px){
+    .row img {
+    width: 100px;
+    height: auto;
+}
 }
 
 </style>
