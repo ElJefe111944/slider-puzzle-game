@@ -184,6 +184,7 @@ export default {
     .row[data-v-4a1f852f] {
     display: flex;
     max-width: 90vw;
+    max-height: 90vh;
     flex-wrap: wrap;
     margin: auto;
     margin-bottom: 60px;

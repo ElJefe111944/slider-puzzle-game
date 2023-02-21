@@ -79,5 +79,16 @@ export default {
     height: auto;
 }
 }
+@media(max-width: 350px){
+    .row {
+    flex-wrap: nowrap;
+  }
+    h2 {
+    font-size: 1em;
+}
+    button {
+    width: 100px;
+}
+}
 
 </style>
