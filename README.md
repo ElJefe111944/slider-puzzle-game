@@ -1,6 +1,11 @@
 # Vue 3 Slider Puzzle Game
 
+![](./src/assets/readme1.png)
+![](./src/assets/readme2.png)
+
 This is a single-page application that allows users to play a slider puzzle game. The game consists of rearranging the parts of a picture until it looks correct. The app has a timer that shows the elapsed time of the game, which is then stored in local storage. Once the puzzle is solved, a message is displayed to the user. 
+
+![](./src/assets/readme3.png)
 
 ## Components
 
